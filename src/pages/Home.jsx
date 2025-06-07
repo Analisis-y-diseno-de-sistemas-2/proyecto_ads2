@@ -1,7 +1,14 @@
 import React from "react";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div className="h-full w-full">
+      <div className="flex justify-center items-center h-full">
+        <h1>Hola</h1>
+        <p>mundos</p>
+      </div>
+    </div>
+  );
 }
 
 export default Home;
