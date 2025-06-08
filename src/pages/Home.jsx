@@ -6,6 +6,7 @@ function Home() {
       <div className="flex justify-center items-center h-full">
         <h1>Hola</h1>
         <p>mundos</p>
+        <p>HOLAAAAAAAA</p>
       </div>
     </div>
   );
