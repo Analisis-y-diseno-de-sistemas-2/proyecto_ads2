@@ -16,6 +16,7 @@ function App() {
           <Route path="/matricula" element={<Matricula />} />
           <Route path="/soporte" element={<Soporte />} />
         </Route>
+
         <Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
