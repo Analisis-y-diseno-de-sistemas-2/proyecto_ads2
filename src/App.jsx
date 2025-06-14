@@ -6,7 +6,8 @@ import Matricula from "./pages/matricula/Matricula";
 import Soporte from "./pages/soporte/Soporte";
 import Login from "./pages/seguridad/Login";
 import Register from "./pages/seguridad/Register";
-
+import RegistroEstudiante from "./pages/matricula/RegistroEstudiante";
+import ConfirmacionMatricula from "./pages/matricula/ComfirmacionMatricula";
 function App() {
   return (
     <Router>
@@ -15,6 +16,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/matricula" element={<Matricula />} />
           <Route path="/soporte" element={<Soporte />} />
+          <Route path="/RegistroEstudiante" element={<RegistroEstudiante/>}/>
+          <Route path="/confirmacion" element={<ConfirmacionMatricula />} />
         </Route>
 
         <Route>
