@@ -8,6 +8,7 @@ import Login from "./pages/seguridad/Login";
 import Register from "./pages/seguridad/Register";
 import RegistroEstudiante from "./pages/matricula/RegistroEstudiante";
 import ConfirmacionMatricula from "./pages/matricula/ComfirmacionMatricula";
+import { MetodoPago } from "./pages/matricula/MetodoPago.jsx";
 function App() {
   return (
     <Router>
@@ -16,8 +17,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/matricula" element={<Matricula />} />
           <Route path="/soporte" element={<Soporte />} />
-          <Route path="/RegistroEstudiante" element={<RegistroEstudiante/>}/>
+          <Route path="/registro" element={<RegistroEstudiante/>}/>
           <Route path="/confirmacion" element={<ConfirmacionMatricula />} />
+          <Route path="/pago" element={<MetodoPago/>}/>
         </Route>
 
         <Route>

@@ -31,7 +31,7 @@ export default function RegistroEstudiante() {
     if (faltantes.length > 0) {
       alert("Faltan subir los siguientes archivos:\n" + faltantes.map(f => `- ${f.label}`).join("\n"));
     } else {
-      navigate("/ConfirmacionMatricula"); //siguiente pagina
+      navigate("/pago"); //siguiente pagina
     }
   };
  //formulario de RegistroEstudiante

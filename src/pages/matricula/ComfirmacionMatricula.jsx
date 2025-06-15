@@ -6,7 +6,7 @@ export default function ConfirmacionMatricula() {
   const navigate = useNavigate();
 
   const volverInicio = () => {
-    navigate('/');
+    navigate('/home');
   };
 
   return (
@@ -30,7 +30,7 @@ export default function ConfirmacionMatricula() {
 
         <h2 className="text-3xl font-extrabold text-green-700">¡Matrícula completada!</h2>
         <p className="text-gray-600 text-lg">
-          Has registrado correctamente los documentos del estudiante.
+           Registro de Matricula Completa.
         </p>
 
         <motion.button
