@@ -6,10 +6,6 @@ import Matricula from "./pages/matricula/Matricula";
 import Soporte from "./pages/soporte/Soporte";
 import Login from "./pages/seguridad/Login";
 import Register from "./pages/seguridad/Register";
-import SolicitudMatricula from "./components/SolicitudMatricula";
-import RegistrarDatos from "./components/RegistrarDatos";
-import Finalizado from "./components/Finalizado";
-import MatriculaLayout from "./components/MatriculaLayout";
 
 function App() {
   return (
@@ -18,11 +14,8 @@ function App() {
         <Route element={<RootLayout />}>
           <Route path="/home" element={<Home />} />
 
-          <Route path="/matricula" element={<MatriculaLayout />}>
-            <Route index element={<SolicitudMatricula />} />
-            <Route path="registrar" element={<RegistrarDatos />} />
-            <Route path="finalizado" element={<Finalizado />} />
-          </Route>
+          <Route path="/matricula" element={<Matricula />} />
+
           <Route path="/soporte" element={<Soporte />} />
         </Route>
 
