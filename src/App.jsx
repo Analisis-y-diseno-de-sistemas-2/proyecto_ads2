@@ -15,7 +15,9 @@ function App() {
       <Routes>
         <Route element={<RootLayout />}>
           <Route path="/home" element={<Home />} />
+
           <Route path="/matricula" element={<Matricula />} />
+
           <Route path="/soporte" element={<Soporte />} />
           <Route path="/registro" element={<RegistroEstudiante/>}/>
           <Route path="/confirmacion" element={<ConfirmacionMatricula />} />
