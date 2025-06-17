@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; //redireccion automatica
- 
-//formulario 
-const archivosRequeridos = [ 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; //redireccion automatica
+
+//formulario
+const archivosRequeridos = [
   { label: "Subir Foto del estudiante", key: "foto", tipo: "image/*" },
   { label: "Partida de Nacimiento", key: "partida", tipo: "application/pdf" },
-  { label: "Doc Identidad del representante legal", key: "dniRepresentante", tipo: "application/pdf" },
-  { label: "Doc Identidad del estudiante", key: "dniEstudiante", tipo: "application/pdf" },
-  { label: "Certificado de de estudios", key: "certificado", tipo: "application/pdf" },
-  { label: "Comprobante de servicio publico", key: "servicio", tipo: "application/pdf" },
+  {
+    label: "Doc Identidad del representante legal",
+    key: "dniRepresentante",
+    tipo: "application/pdf",
+  },
+  {
+    label: "Doc Identidad del estudiante",
+    key: "dniEstudiante",
+    tipo: "application/pdf",
+  },
+  {
+    label: "Certificado de de estudios",
+    key: "certificado",
+    tipo: "application/pdf",
+  },
+  {
+    label: "Comprobante de servicio publico",
+    key: "servicio",
+    tipo: "application/pdf",
+  },
 ];
 
 export default function RegistroEstudiante() {
@@ -18,23 +34,28 @@ export default function RegistroEstudiante() {
   const manejarCambioArchivo = (e, key) => {
     const file = e.target.files[0];
     if (file) {
-      setArchivos(prev => ({ ...prev, [key]: file }));
+      setArchivos((prev) => ({ ...prev, [key]: file }));
     }
   };
 
   const irAtras = () => {
-    navigate("/FormularioMatricula");//pagina anterion 
+    navigate("/FormularioMatricula"); //pagina anterion
   };
 
   const continuar = () => {
-    const faltantes = archivosRequeridos.filter(item => !archivos[item.key]);
+    const faltantes = archivosRequeridos.filter((item) => !archivos[item.key]);
     if (faltantes.length > 0) {
-      alert("Faltan subir los siguientes archivos:\n" + faltantes.map(f => `- ${f.label}`).join("\n"));
+      alert(
+        "Faltan subir los siguientes archivos:\n" +
+          faltantes.map((f) => `- ${f.label}`).join("\n")
+      );
     } else {
       navigate("/pago"); //siguiente pagina
     }
   };
- //formulario de RegistroEstudiante
+  console.log(archivos); //ver archivos subidos en consola
+
+  //formulario de RegistroEstudiante
   return (
     <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white p-10 rounded-xl shadow-xl space-y-6">
@@ -45,7 +66,12 @@ export default function RegistroEstudiante() {
         <div className="space-y-4">
           {archivosRequeridos.map((item) => (
             <div key={item.key} className="flex justify-between items-center">
-              <label htmlFor={item.key} className="text-gray-800 text-[15px] w-[65%]">{item.label}</label>
+              <label
+                htmlFor={item.key}
+                className="text-gray-800 text-[15px] w-[65%]"
+              >
+                {item.label}
+              </label>
 
               <input
                 type="file"
@@ -63,8 +89,8 @@ export default function RegistroEstudiante() {
                         ? "/ok.png"
                         : "/ok.png"
                       : item.key === "foto"
-                        ? "/img.png"
-                        : "/subida.png"
+                      ? "/img.png"
+                      : "/subida.png"
                   }
                   alt="Subir"
                   className="w-full h-full object-cover"

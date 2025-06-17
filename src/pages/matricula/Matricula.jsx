@@ -6,10 +6,38 @@ import Finalizado from "../../components/steps/Finalizado";
 import Stepper from "../../components/stepercontrol/Stepper";
 import ButtonControl from "../../components/stepercontrol/ButtonControl";
 import { StepperContext } from "../../context/StepperContext";
-
+const archivosRequeridos = [
+  { label: "Subir Foto del estudiante", key: "foto", tipo: "image/*" },
+  { label: "Partida de Nacimiento", key: "partida", tipo: "application/pdf" },
+  {
+    label: "Doc Identidad del representante legal",
+    key: "dniRepresentante",
+    tipo: "application/pdf",
+  },
+  {
+    label: "Doc Identidad del estudiante",
+    key: "dniEstudiante",
+    tipo: "application/pdf",
+  },
+  {
+    label: "Certificado de de estudios",
+    key: "certificado",
+    tipo: "application/pdf",
+  },
+  {
+    label: "Comprobante de servicio publico",
+    key: "servicio",
+    tipo: "application/pdf",
+  },
+];
 function Matricula() {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState("");
+  const [archivos, setArchivos] = useState({});
+  const [datosPago, setDatosPago] = useState({
+    tarjeta: { numero: "", vencimiento: "", cvv: "" },
+    yape: { telefono: "", codigo: "" },
+  });
   const [finalData, setFinalData] = useState([]);
   const steps = [
     "Account information",
@@ -34,9 +62,31 @@ function Matricula() {
   const handleClick = (direction) => {
     let newStep = currentStep;
 
-    direction === "next" ? newStep++ : newStep--;
-    newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
+    if (direction === "next") {
+      // Validación solo en el paso 2
+      if (currentStep === 2) {
+        const faltantes = archivosRequeridos.filter(
+          (item) => !archivos[item.key]
+        );
+        if (faltantes.length > 0) {
+          alert(
+            "Faltan subir los siguientes archivos:\n" +
+              faltantes.map((f) => `- ${f.label}`).join("\n")
+          );
+          return; // Detiene el avance si hay faltantes
+        }
+      }
+      newStep++;
+    } else {
+      newStep--;
+    }
+
+    // Avanza solo si el newStep está dentro de los límites
+    if (newStep > 0 && newStep <= steps.length) {
+      setCurrentStep(newStep);
+    }
   };
+
   return (
     <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white ">
       {/* Stepper */}
@@ -49,6 +99,12 @@ function Matricula() {
             value={{
               userData,
               setUserData,
+              archivos,
+              setArchivos,
+              setCurrentStep,
+              datosPago,
+              setDatosPago,
+              archivosRequeridos,
               finalData,
               setFinalData,
             }}
