@@ -3,9 +3,11 @@ import { StepperContext } from "../../context/StepperContext";
 import { useNavigate } from "react-router-dom";
 
 const Finalizado = () => {
-  const { datosPago } = useContext(StepperContext);
+  const { datosPago, userData } = useContext(StepperContext);
   const metodoPago = datosPago.yape.telefono ? "Yape" : "Tarjeta";
   console.log("Datos de pago en Finalizado:", datosPago);
+  console.log("Datos del usuario en Finalizado:", userData);
+
   const navigate = useNavigate();
   return (
     <div>
@@ -35,15 +37,19 @@ const Finalizado = () => {
           </div>
           <div className="flex flex-col justify-baseline">
             <p className="text-gray-500 text-sm">Nombre del estudiante</p>
-            <p className="font-medium text-xl">Esteban Quito</p>
+            <p className="font-medium text-xl capitalize">
+              {userData.estudiante || ""}
+            </p>
           </div>
           <div className="flex flex-col justify-baseline">
             <p className="text-gray-500 text-sm">Doc Identidad</p>
-            <p className="font-medium text-xl">DNI | 75233122</p>
+            <p className="font-medium text-xl">
+              DNI | {userData.dniEstudiante || ""}
+            </p>
           </div>
           <div className="flex flex-col justify-baseline">
             <p className="text-gray-500 text-sm">Grado</p>
-            <p className="font-medium text-xl">5to de Primaria</p>
+            <p className="font-medium text-xl">{userData.grado || ""}</p>
           </div>
           <div className="flex flex-col justify-baseline">
             <p className="text-gray-500 text-sm">Aula asignada</p>

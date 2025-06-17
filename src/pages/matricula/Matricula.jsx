@@ -34,11 +34,13 @@ function Matricula() {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState("");
   const [archivos, setArchivos] = useState({});
+  const [handleStepSubmit, setHandleStepSubmit] = useState(null);
   const [datosPago, setDatosPago] = useState({
     tarjeta: { numero: "", vencimiento: "", cvv: "" },
     yape: { telefono: "", codigo: "" },
   });
   const [finalData, setFinalData] = useState([]);
+
   const steps = [
     "Account information",
     "Personal information",
@@ -59,11 +61,17 @@ function Matricula() {
     }
   };
 
-  const handleClick = (direction) => {
+  const handleClick = async (direction) => {
     let newStep = currentStep;
 
     if (direction === "next") {
-      // Validación solo en el paso 2
+      // Paso 1: validar formulario
+      if (currentStep === 1) {
+        const isValid = await handleStepSubmit(); // ✅ validación del form
+        if (!isValid) return; // ⛔ Detiene si hay errores
+      }
+
+      // Paso 2: validar archivos
       if (currentStep === 2) {
         const faltantes = archivosRequeridos.filter(
           (item) => !archivos[item.key]
@@ -73,15 +81,15 @@ function Matricula() {
             "Faltan subir los siguientes archivos:\n" +
               faltantes.map((f) => `- ${f.label}`).join("\n")
           );
-          return; // Detiene el avance si hay faltantes
+          return;
         }
       }
+
       newStep++;
     } else {
       newStep--;
     }
 
-    // Avanza solo si el newStep está dentro de los límites
     if (newStep > 0 && newStep <= steps.length) {
       setCurrentStep(newStep);
     }
@@ -107,6 +115,7 @@ function Matricula() {
               archivosRequeridos,
               finalData,
               setFinalData,
+              setHandleStepSubmit,
             }}
           >
             {displayStep(currentStep)}
