@@ -1,4 +1,4 @@
-import { Upload } from 'lucide-react';
+import { Upload } from "lucide-react";
 
 const FormularioConsulta = () => {
   return (
@@ -9,11 +9,14 @@ const FormularioConsulta = () => {
         </h2>
 
         <form className="space-y-5">
-        
           <div>
-            <label className="text-xs text-gray-500 block mb-1">*Opcional</label>
+            <label className="text-xs text-gray-500 block mb-1">
+              *Opcional
+            </label>
             <div className="flex items-center space-x-2">
-              <span className="text-gray-400 font-medium">Subir archivo adjunto</span>
+              <span className="text-gray-400 font-medium">
+                Subir archivo adjunto
+              </span>
               <button
                 type="button"
                 className="bg-blue-100 text-blue-700 p-2 rounded"
@@ -24,7 +27,6 @@ const FormularioConsulta = () => {
             </div>
           </div>
 
-          
           <div>
             <input
               type="text"
@@ -33,7 +35,6 @@ const FormularioConsulta = () => {
             />
           </div>
 
-         
           <div>
             <textarea
               placeholder="Detalles de la consulta"
@@ -42,7 +43,6 @@ const FormularioConsulta = () => {
             />
           </div>
 
-          
           <div className="flex justify-between pt-2">
             <button
               type="button"

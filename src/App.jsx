@@ -6,9 +6,9 @@ import Matricula from "./pages/matricula/Matricula";
 import Soporte from "./pages/soporte/Soporte";
 import Login from "./pages/seguridad/Login";
 import Register from "./pages/seguridad/Register";
-import Ver from "./pages/soporte/Ver_Lista";
+import VerLista from "./pages/soporte/VerLista";
+import FormularioConsulta from "./pages/soporte/FormularioConsulta";
 import Reporte from "./pages/soporte/Reporte";
-import FormularioConsulta from "./pages/soporte/Formulario_Consulta";
 
 function App() {
   return (
@@ -26,9 +26,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>
-            <Route path="/Ver" element={<Ver/>} />
-            <Route path="/Reporte" element={<Reporte/>} />
-            <Route path="/FormularioConsulta" element={<FormularioConsulta/>}/>
+        <Route path="/Ver" element={<VerLista />} />
+        <Route path="/Reporte" element={<Reporte />} />
+        <Route path="/FormularioConsulta" element={<FormularioConsulta />} />
       </Routes>
     </Router>
   );
