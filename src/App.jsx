@@ -6,6 +6,7 @@ import Matricula from "./pages/matricula/Matricula";
 import Soporte from "./pages/soporte/Soporte";
 import Login from "./pages/seguridad/Login";
 import Register from "./pages/seguridad/Register";
+import CrearReporteQueja from "./pages/soporte/CrearReporteQueja";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/matricula" element={<Matricula />} />
 
           <Route path="/soporte" element={<Soporte />} />
+          <Route path="/soporte/queja" element={<CrearReporteQueja />} />
         </Route>
 
         <Route>
