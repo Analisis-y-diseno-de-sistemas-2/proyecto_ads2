@@ -2,6 +2,8 @@ import React from "react";
 import Botones from "../components/Botones";
 import Boton_de_bandeja from "../components/Boton_de_bandeja";
 
+
+
 function Home() {
   return (
     <div className="h-[calc(100vh-40rem)] w-full ">
