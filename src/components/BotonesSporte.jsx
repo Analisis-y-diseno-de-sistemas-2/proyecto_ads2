@@ -19,10 +19,6 @@ const BotonesSporte = () => {
           <FaCircleQuestion className="w-8 h-10 text-a1" />
           <span>Resolver una duda</span>
         </button>
-        <button className="cursor-pointer flex items-center max-w-60 gap-4 px-8 py-4  bg-gray-100 text-black shadow-[0_8px_10px_rgba(0,0,0,0.8)] transform transition-transform duration-300 hover:scale-110 ">
-          <RiFileList3Fill className="w-8 h-10 text-a1" />
-          <span>Ver estado de reporte</span>
-        </button>
       </div>
     </div>
   );
