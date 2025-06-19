@@ -67,8 +67,8 @@ function Matricula() {
     if (direction === "next") {
       // Paso 1: validar formulario
       if (currentStep === 1) {
-        const isValid = await handleStepSubmit(); // ✅ validación del form
-        if (!isValid) return; // ⛔ Detiene si hay errores
+        const result = await handleStepSubmit();
+        if (!result) return;
       }
 
       // Paso 2: validar archivos
