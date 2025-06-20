@@ -105,16 +105,16 @@ const CrearReporteQueja = () => {
             />
           </div>
           <div className="flex justify-center gap-6 pt-2">
-            <a href="">
-              <button
-                className="bg-[#ABABAB] text-white uppercase w-32 py-2 px-4 
+            <button
+              onClick={() => window.history.back()}
+              className="bg-[#ABABAB] text-white uppercase w-32 py-2 px-4 
           rounded-xl font-semibold cursor-pointer border-2 
            hover:bg-slate-700 hover:text-white transition duration-200 
         ease-in-out"
-              >
-                Cancelar
-              </button>
-            </a>
+            >
+              Cancelar
+            </button>
+
             {/* <a href="">
               <button
                 className="bg-[#92C137] text-white border-2 uppercase w-32 py-2 px-4 rounded-xl font-semibold cursor-pointer  hover:bg-slate-700 hover:text-white

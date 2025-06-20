@@ -1,4 +1,4 @@
-import { CheckCircle } from 'lucide-react';
+import { FaCheckCircle } from "react-icons/fa";
 
 const Reporte = () => {
   return (
@@ -8,7 +8,7 @@ const Reporte = () => {
           <span className="text-lime-600 font-semibold text-2xl leading-tight">
             Se ha enviado <br /> el Reporte
           </span>
-          <CheckCircle className="text-lime-600 w-8 h-8" />
+          <FaCheckCircle className="text-lime-600 w-8 h-8" />
         </div>
       </div>
     </div>
