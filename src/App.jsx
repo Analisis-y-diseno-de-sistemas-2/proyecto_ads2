@@ -6,6 +6,7 @@ import Matricula from "./pages/matricula/Matricula";
 import Soporte from "./pages/soporte/Soporte";
 import Login from "./pages/seguridad/Login";
 import Register from "./pages/seguridad/Register";
+import Olvide from "./pages/seguridad/OlvideContraseña";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/Olvide" element={<Olvide />} />
         </Route>
       </Routes>
     </Router>
