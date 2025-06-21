@@ -9,7 +9,7 @@ import Register from "./pages/seguridad/Register";
 import VerLista from "./pages/soporte/VerLista";
 import FormularioConsulta from "./pages/soporte/FormularioConsulta";
 import Reporte from "./pages/soporte/Reporte";
-import CrearReporteQueja from "./pages/soporte/CrearReporteQueja";
+import ReporteQueja from "./pages/soporte/ReporteQueja";
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route path="/matricula" element={<Matricula />} />
 
           <Route path="/soporte" element={<Soporte />} />
-          <Route path="/soporte/queja" element={<CrearReporteQueja />} />
+          <Route path="/queja" element={<ReporteQueja />} />
         </Route>
 
         <Route>
