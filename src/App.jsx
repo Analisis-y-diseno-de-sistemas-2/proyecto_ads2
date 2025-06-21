@@ -6,10 +6,12 @@ import Matricula from "./pages/matricula/Matricula";
 import Soporte from "./pages/soporte/Soporte";
 import Login from "./pages/seguridad/Login";
 import Register from "./pages/seguridad/Register";
+import Olvide from "./pages/seguridad/OlvideContraseña";
 import VerLista from "./pages/soporte/VerLista";
 import Reporte from "./pages/soporte/Reporte";
 import CrearReporteQueja from "./pages/soporte/CrearReporteQueja";
 import CrearReporteDuda from "./pages/soporte/CrearReporteDuda";
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
         <Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/Olvide" element={<Olvide />} />
         </Route>
         <Route path="/Ver" element={<VerLista />} />
         <Route path="/Reporte" element={<Reporte />} />
