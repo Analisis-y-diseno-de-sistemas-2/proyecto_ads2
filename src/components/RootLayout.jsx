@@ -4,11 +4,10 @@ import { Outlet } from "react-router-dom";
 
 function RootLayout() {
   return (
-    <div className="">
+    <div className="min-h-screen bg-[#EFEFEF]">
       <Navbar />
 
-      <main className="flex-1   p-4">
-
+      <main className="mt-4 p-4">
         <Outlet />
       </main>
     </div>

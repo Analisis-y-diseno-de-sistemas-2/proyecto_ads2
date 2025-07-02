@@ -1,10 +1,63 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaFileArrowUp } from "react-icons/fa6";
+import useUser from "../../hooks/useUser";
+import { postPetition } from "../../resources/ApiFunction";
+import { useNavigate } from "react-router-dom";
 
 const CrearReporteQueja = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const navigate = useNavigate();
+  const { id, jwt } = useUser();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      usuario: { id: id },
+    },
+  });
+  const onSubmit = async (data) => {
+    const archivo = data.archivo?.[0];
+
+    const reporte = {
+      nombreAfectado: data.nombre,
+      tipoDocumento: data.tipo_documento,
+      numeroDocumento: data.documento,
+      fechaIncidente: data.fecha_incidente,
+      lugarIncidente: data.lugar,
+      motivoQueja: data.queja,
+      detalleQueja: data.detalle,
+      estado: 1,
+      usuario: { id: id },
+    };
+
+    const formData = new FormData();
+    formData.append(
+      "reporte",
+      new Blob([JSON.stringify(reporte)], { type: "application/json" })
+    );
+    if (archivo) {
+      formData.append("archivoPrueba", archivo);
+    }
+
+    postPetition(
+      "reportes-queja/crear",
+      formData,
+      (res) => {
+        if (res.status === 200 || res.status === 201) {
+          alert("Reporte enviado correctamente");
+          navigate("/soporte/muestra", {
+            state: {
+              ...reporte,
+              id: res.data.id,
+              archivoUrl: res.data.archivoUrl || null,
+              tipo: "Registro de queja",
+            },
+          });
+        } else {
+          alert("Error al enviar el reporte");
+        }
+      },
+      jwt
+    );
+  };
   return (
     <div className="flex  justify-center h-[calc(100vh-10rem)] bg-gray-200">
       <div className="flex flex-col w-full max-w-3xl items-center bg-white rounded-lg shadow-md m-6">

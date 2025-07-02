@@ -1,6 +1,5 @@
 import React from "react";
 import Botones from "../components/Botones";
-import Boton_de_bandeja from "../components/BotonBandeja";
 
 function Home() {
   return (
@@ -16,7 +15,6 @@ function Home() {
       <div className="flex justify-center items-center  h-full">
         <Botones />
       </div>
-      <Boton_de_bandeja />
     </div>
   );
 }
