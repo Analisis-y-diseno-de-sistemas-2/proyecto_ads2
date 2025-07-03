@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {SERVICEURL} from './Const';
 
-const urlAPI = "http://"+SERVICEURL+"/";
+const urlAPI = SERVICEURL+"/";
 
 export const postPetition=async(path,data,callback,token)=>{
     await axios.post(urlAPI+path,data,addToken(token))

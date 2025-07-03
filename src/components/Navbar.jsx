@@ -33,7 +33,7 @@ function Navbar() {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
-            src="../../public/Carl-Sagan-log.webp"
+            src="/Carl-Sagan-log.webp"
             className="h-16 bg-gray-500"
             alt="carl sagan Logo"
           />

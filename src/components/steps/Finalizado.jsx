@@ -99,7 +99,7 @@ const Finalizado = () => {
               <p className="font-medium text-xl">034155</p>
             </div>
             <img
-              src="../../../public/Carl-Sagan-log.webp"
+              src="/Carl-Sagan-log.webp"
               className="h-16"
               alt="logo-empresa"
             />

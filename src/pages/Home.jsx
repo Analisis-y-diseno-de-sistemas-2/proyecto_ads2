@@ -7,7 +7,7 @@ function Home() {
       <div className="w-full h-[34rem]">
         <img
           className="w-full h-[34rem]"
-          src="../../../public/imagen_Portada.jpg"
+          src="/imagen_Portada.jpg"
           alt="Logo"
         />
       </div>

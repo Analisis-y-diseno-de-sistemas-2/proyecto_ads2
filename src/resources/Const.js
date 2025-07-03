@@ -1,1 +1,1 @@
-export const SERVICEURL = "localhost:9193";
+export const SERVICEURL = "https://ec4f-132-251-1-52.ngrok-free.app/";
