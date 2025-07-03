@@ -1,13 +1,82 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StepperContext } from "../../context/StepperContext";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { postPetition } from "../../resources/ApiFunction";
+import useUser from "../../hooks/useUser";
 
 const Finalizado = () => {
-  const { datosPago, userData } = useContext(StepperContext);
+  const { jwt, id } = useUser();
+  const { datosPago, userData, setUserData, archivos } =
+    useContext(StepperContext);
+  const [isReady, setIsReady] = useState(false);
+  // Agregar los defaultValues a userData
+  useEffect(() => {
+    const defaultData = {
+      aula: "B",
+      metodoPago: datosPago.yape.telefono ? "Yape" : "Tarjeta",
+      monto: 30.0,
+      fechaPago: new Date().toISOString(),
+      fechaInicio: "2025-03-15",
+      idUsuario: Number(id),
+    };
+    setUserData((prevData) => {
+      const updatedData = { ...prevData, ...defaultData };
+      return updatedData;
+    });
+
+    // Esperamos un poco para asegurar que userData esté actualizado
+    setTimeout(() => {
+      setIsReady(true); // habilita el segundo useEffect
+    }, 100); // puedes ajustar el delay si es necesario
+  }, [setUserData, datosPago, id]);
   const metodoPago = datosPago.yape.telefono ? "Yape" : "Tarjeta";
   console.log("Datos de pago en Finalizado:", datosPago);
   console.log("Datos del usuario en Finalizado:", userData);
+  console.log("Archivos en Finalizado:", archivos);
+  useEffect(() => {
+    if (!isReady) return;
 
+    const registrarMatricula = async () => {
+      if (!userData || !archivos || archivos.length < 6) {
+        console.error("Datos o archivos incompletos.");
+        return;
+      }
+
+      const formData = new FormData();
+
+      formData.append(
+        "matricula",
+        new Blob([JSON.stringify(userData)], { type: "application/json" })
+      );
+
+      formData.append("fotoEstudiante", archivos.urlFotoEstudiante);
+      formData.append("partidaNacimiento", archivos.urlPartidaNacimiento);
+      formData.append(
+        "docIdentidadRepresentante",
+        archivos.urlDocRepresentante
+      );
+      formData.append("docIdentidadEstudiante", archivos.urlDocEstudiante);
+      formData.append("certificadoEstudios", archivos.urlCertificadoEstudios);
+      formData.append("comprobanteServicio", archivos.urlComprobanteServicio);
+
+      postPetition(
+        "matricula/registrar",
+        formData,
+        (res) => {
+          if (res.status === 200 || res.status === 201) {
+            alert("Matrícula registrada exitosamente");
+            console.log("Respuesta:", res);
+          } else {
+            alert("Error al registrar la matrícula");
+          }
+        },
+        jwt
+      );
+    };
+
+    registrarMatricula();
+  }, [isReady, userData, archivos, jwt]);
   const navigate = useNavigate();
   return (
     <div>
@@ -38,7 +107,7 @@ const Finalizado = () => {
           <div className="flex flex-col justify-baseline">
             <p className="text-gray-500 text-sm">Nombre del estudiante</p>
             <p className="font-medium text-xl capitalize">
-              {userData.estudiante || ""}
+              {userData.nombreEstudiante || ""}
             </p>
           </div>
           <div className="flex flex-col justify-baseline">

@@ -7,26 +7,34 @@ import Stepper from "../../components/stepercontrol/Stepper";
 import ButtonControl from "../../components/stepercontrol/ButtonControl";
 import { StepperContext } from "../../context/StepperContext";
 const archivosRequeridos = [
-  { label: "Subir Foto del estudiante", key: "foto", tipo: "image/*" },
-  { label: "Partida de Nacimiento", key: "partida", tipo: "application/pdf" },
+  {
+    label: "Subir Foto del estudiante",
+    key: "urlFotoEstudiante",
+    tipo: "image/*",
+  },
+  {
+    label: "Partida de Nacimiento",
+    key: "urlPartidaNacimiento",
+    tipo: "application/pdf",
+  },
   {
     label: "Doc Identidad del representante legal",
-    key: "dniRepresentante",
+    key: "urlDocRepresentante",
     tipo: "application/pdf",
   },
   {
     label: "Doc Identidad del estudiante",
-    key: "dniEstudiante",
+    key: "urlDocEstudiante",
     tipo: "application/pdf",
   },
   {
     label: "Certificado de de estudios",
-    key: "certificado",
+    key: "urlCertificadoEstudios",
     tipo: "application/pdf",
   },
   {
     label: "Comprobante de servicio publico",
-    key: "servicio",
+    key: "urlComprobanteServicio",
     tipo: "application/pdf",
   },
 ];

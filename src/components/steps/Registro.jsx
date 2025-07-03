@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { StepperContext } from "../../context/StepperContext";
 
 const Registro = () => {
-  const { archivos, setArchivos, archivosRequeridos } =
+  const { archivos, setArchivos, setUserData, archivosRequeridos } =
     useContext(StepperContext);
   const manejarCambioArchivo = (e, key) => {
     const file = e.target.files[0];

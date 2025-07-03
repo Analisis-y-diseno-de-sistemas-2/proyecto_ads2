@@ -9,7 +9,12 @@ const Solicitud = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      tipoDocumentoEstudiante: "DNI",
+      tipoDocumentoRepresentante: "DNI",
+    },
+  });
   const onSubmit = useCallback(
     (data) => {
       console.log(data);
@@ -50,7 +55,7 @@ const Solicitud = () => {
                   type="text"
                   name=""
                   className="border border-gray-300 rounded bg-white px-2 py-0.5 mx-2 w-60 xl:w-100"
-                  {...register("nombre", {
+                  {...register("nombreRepresentante", {
                     required: true,
                   })}
                 />
@@ -66,7 +71,7 @@ const Solicitud = () => {
                   type="number"
                   name=""
                   className="border border-gray-300 rounded bg-white px-2 py-0.5 mx-2 w-32 xl:w-60"
-                  {...register("dni", {
+                  {...register("dniRepresentante", {
                     required: "El DNI es obligatorio.",
                     pattern: {
                       value: /^\d{8}$/,
@@ -82,7 +87,7 @@ const Solicitud = () => {
                   type="text"
                   name=""
                   className="border border-gray-300 rounded bg-white px-2 py-0.5 mx-2 w-32 xl:w-60"
-                  {...register("rol", {
+                  {...register("calidadDelRepresentante", {
                     required: true,
                   })}
                 />{" "}
@@ -91,7 +96,7 @@ const Solicitud = () => {
                   type="text"
                   name=""
                   className="border border-gray-300 rounded bg-white px-2 py-0.5 mx-2 w-32 xl:w-60"
-                  {...register("estudiante", {
+                  {...register("nombreEstudiante", {
                     required: true,
                   })}
                 />
@@ -128,7 +133,7 @@ const Solicitud = () => {
                   type="text"
                   name=""
                   className="border border-gray-300 rounded bg-white px-2 py-0.5 mx-2 w-32 xl:w-60"
-                  {...register("anioLectivo", {
+                  {...register("anio", {
                     required: true,
                   })}
                 />
